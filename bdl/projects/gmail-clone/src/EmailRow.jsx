@@ -3,11 +3,15 @@ import StarBorderIcon from '@mui/icons-material/StarBorder'
 import React from 'react'
 import "./EmailRow.css"
 import { LabelImportantOutlined } from '@material-ui/icons'
+import { useNavigate } from "react-router-dom"
 
 
 function EmailRow({ id, title, subject, description, time }) {
+
+    const history = useNavigate()
+
   return (
-    <div className='emailRow'>
+    <div onClick={() => history('/mail')} className='emailRow'>
 
         <div className="emailRow__options">
             <Checkbox />
@@ -27,8 +31,8 @@ function EmailRow({ id, title, subject, description, time }) {
 
         <div className="emailRow__message">
            <h4>
-            {subject}
-            <span className='emailRow__description'>{description}</span>
+            {subject}{' '}
+            <span className='emailRow__description'>-{description}</span>
            </h4>
         </div>
 
